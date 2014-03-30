@@ -1,0 +1,8 @@
+#messages{
+	height: 380px;
+	overflow: auto;
+}
+
+.message{
+	margin: 0;
+}
