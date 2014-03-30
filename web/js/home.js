@@ -3,6 +3,20 @@ var lastId = 0;
 $(function(){
 
 	lastId = $('#messages > .message:last').attr('data-value');
+	
+	$('#messages').animate({scrollTop: $('#messages').css('height')});
+	
+	$('#authorInput').keydown(function (e){
+		if(e.keyCode == 13){
+			$('#messageInput').focus();
+		}
+	});
+	
+	$('#messageInput').keydown(function (e){
+		if(e.keyCode == 13){
+			$('#submitMessage').click();
+		}
+	});
 
 	window.setInterval(function(){
 		var collected = {
@@ -17,9 +31,10 @@ $(function(){
 			success: function(result){
 				if(result != ''){
 					result.forEach(function(entry){
-						$("#messages").append('<p>' + entry.author + ' : ' + entry.message + '</p>');
+						$("#messages").append('<p class="message">' + entry.author + ' : ' + entry.message + '</p>');
 					});
 					lastId = result[result.length-1].id;
+					$('#messages').animate({scrollTop: $('#messages').css('height')});
 				}
 			},
 			error: function() {
@@ -50,7 +65,6 @@ function addMessage(){
         data: collected,
         dataType: "json",
         success: function(result){
-			$('#authorInput').val("");
 			$('#messageInput').val("");
         },
         error: function() {
