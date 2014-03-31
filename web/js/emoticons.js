@@ -26,4 +26,8 @@ $(function(){
 	for(var key in emoticonsString) {
 	  $('#emoticons').append( key + " => " + emoticonsString[key] + "<br />");
 	}
+	
+	$('#help').click(function(){
+		$('#emoticons').dialog();
+	});
 });

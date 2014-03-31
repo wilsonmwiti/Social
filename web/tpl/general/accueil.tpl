@@ -23,9 +23,14 @@
 	<form action="/hkt/messages" method="post" id="addMessage">
 		<table>
 			<tr><td>Author*</td><td><input required type="text" name="author" id="authorInput"/></td></tr>
-			<tr><td>Message*</td><td><input required type="text" name="message" id="messageInput" size="140" maxlength="140"/></td><td>print : <span id="print">140</span></td></tr>
+			<tr>
+				<td>Message*</td>
+				<td><input required type="text" name="message" id="messageInput" size="140" maxlength="140"/><img id="help" src="web/images/help.png" alt="help" /></td>
+				<td>print : <span id="print">140</span></td>
+			</tr>
 		</table>
 		<input type="button" value="Envoyer" id="submitMessage" onClick="addMessage()"/>
 	</form>
-	<div id="emoticons"></div>
+	
+	<div id="emoticons" style="display: none;"></div>
 {/block}

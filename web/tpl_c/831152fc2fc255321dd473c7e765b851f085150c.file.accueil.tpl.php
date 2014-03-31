@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-03-31 08:18:41
+<?php /* Smarty version Smarty-3.1.14, created on 2014-03-31 09:07:42
          compiled from "web\tpl\general\accueil.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:303665332b3ebe30351-20270201%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '831152fc2fc255321dd473c7e765b851f085150c' => 
     array (
       0 => 'web\\tpl\\general\\accueil.tpl',
-      1 => 1396252982,
+      1 => 1396256718,
       2 => 'file',
     ),
     'be1c21a7c90a71d03992fe17948bced22c19dc3c' => 
     array (
       0 => 'web\\tpl\\general\\layout.tpl',
-      1 => 1396247865,
+      1 => 1396256861,
       2 => 'file',
     ),
   ),
@@ -37,9 +37,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		
     <meta name="description" content="" />
     
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />    
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />  
+
+		<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['rootPath']->value;?>
+web/css/general.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['rootPath']->value;?>
+web/css/jquery-ui-1.10.4.custom.min.css">
+		
 		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['rootPath']->value;?>
 web/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['rootPath']->value;?>
+web/js/jquery-1.10.2.js"> </script>
+		<script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['rootPath']->value;?>
+web/js/jquery-ui-1.10.4.custom.min.js"> </script>
 		
 		
 	<link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['rootPath']->value;?>
@@ -70,11 +80,16 @@ $_smarty_tpl->tpl_vars['message']->_loop = true;
 	<form action="/hkt/messages" method="post" id="addMessage">
 		<table>
 			<tr><td>Author*</td><td><input required type="text" name="author" id="authorInput"/></td></tr>
-			<tr><td>Message*</td><td><input required type="text" name="message" id="messageInput" size="140" maxlength="140"/></td><td>print : <span id="print">140</span></td></tr>
+			<tr>
+				<td>Message*</td>
+				<td><input required type="text" name="message" id="messageInput" size="140" maxlength="140"/><img id="help" src="web/images/help.png" alt="help" /></td>
+				<td>print : <span id="print">140</span></td>
+			</tr>
 		</table>
 		<input type="button" value="Envoyer" id="submitMessage" onClick="addMessage()"/>
 	</form>
-	<div id="emoticons"></div>
+	
+	<div id="emoticons" style="display: none;"></div>
 
 	</body>
 </html>
