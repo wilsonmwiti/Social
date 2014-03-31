@@ -28,7 +28,7 @@ USE `social`;
 -- Structure de la table `message`
 --
 
-CREATE TABLE IF NOT EXISTS `message` (
+CREATE TABLE IF NOT EXISTS `social_message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(20) NOT NULL,
   `message` text NOT NULL,

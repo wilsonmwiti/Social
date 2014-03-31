@@ -16,6 +16,9 @@ $(function(){
 		if(e.keyCode == 13){
 			$('#submitMessage').click();
 		}
+		else{
+			$('#print').html(140 - ($(this).val().length + 1));
+		}
 	});
 
 	window.setInterval(function(){
@@ -41,7 +44,6 @@ $(function(){
 			}
 		});
 	}, 1000);
-
 });
 
 function addMessage(){
@@ -52,6 +54,10 @@ function addMessage(){
 	if(author == '' || message == ''){
 		alert('All fields are required !');
 		return false;
+	}
+	
+	for(var key in emoticonsString) {
+	  message = message.replace(emoticonsString[key], emoticonsImg[key]);
 	}
 
 	var collected = {
@@ -66,9 +72,10 @@ function addMessage(){
         dataType: "json",
         success: function(result){
 			$('#messageInput').val("");
+			$('#print').val(140);
         },
         error: function() {
-            alert("Une erreure est survenue, veuillez contacter l'administrateur du site !");
+            alert("Une erreur est survenue, veuillez contacter l'administrateur du site !");
         }
     });
 
