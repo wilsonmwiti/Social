@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace SocialChatBusiness
 {
@@ -16,15 +13,9 @@ namespace SocialChatBusiness
         /// <returns></returns>
         public static List<string> FetchImgSourceFromHtml(string htmlSource)
         {
-            List<string> link = new List<string>();
-            string regexImgSrc = @"<img[^>]*?src\s*=\s*[""']?([^'"" >]+?)[ '""][^>]*?>";
-            MatchCollection matchesImgSrc = Regex.Matches(htmlSource, regexImgSrc, RegexOptions.IgnoreCase | RegexOptions.Singleline);
-            foreach (Match m in matchesImgSrc)
-            {
-                string href = m.Groups[1].Value;
-                link.Add(href);
-            }
-            return link;
+            const string regexImgSrc = @"<img[^>]*?src\s*=\s*[""']?([^'"" >]+?)[ '""][^>]*?>";
+            var matchesImgSrc = Regex.Matches(htmlSource, regexImgSrc, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            return (from Match m in matchesImgSrc select m.Groups[1].Value).ToList();
         }
 
         /// <summary>
@@ -34,8 +25,8 @@ namespace SocialChatBusiness
         /// <returns></returns>
         public static List<string> SplitHtmlTags(string input)
         {
-            string regexImgSrc = @"<[^>]+>|&nbsp;";
-            string[] output = Regex.Split(input, regexImgSrc);
+            const string regexImgSrc = @"<[^>]+>|&nbsp;";
+            var output = Regex.Split(input, regexImgSrc);
 
             return output.ToList();
         }
@@ -47,8 +38,8 @@ namespace SocialChatBusiness
         /// <returns></returns>
         public static string RemoveHtmlTags(string input)
         {
-            string regexImgSrc = @"<[^>]+>|&nbsp;";
-            string output = Regex.Replace(input, regexImgSrc, "");
+            const string regexImgSrc = @"<[^>]+>|&nbsp;";
+            var output = Regex.Replace(input, regexImgSrc, "");
 
             return output;
         }

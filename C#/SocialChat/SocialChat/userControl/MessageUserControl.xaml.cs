@@ -1,18 +1,9 @@
 ﻿using SocialChatBusiness;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SocialChat.userControl
 {
@@ -23,10 +14,10 @@ namespace SocialChat.userControl
     {
         #region Attributs
 
-        private string _author;
+        private readonly string _author;
         private string _originalMessage;
         private List<string> _messageComponents;
-        private List<Image> _emoticons;
+        private readonly List<Image> _emoticons;
 
         public string OriginalMessage
         {
@@ -45,11 +36,7 @@ namespace SocialChat.userControl
                     var imgName = Tools.DetectFileName(imgPath);
 
                     var bitmap = new BitmapImage(new Uri(string.Format("/images/emoticons/{0}", imgName), UriKind.Relative));
-                    var img = new Image();
-                    img.Width = 15;
-                    img.Height = 15;
-                    img.Source = bitmap;
-                    img.Visibility = Visibility.Visible;
+                    var img = new Image {Width = 15, Height = 15, Source = bitmap, Visibility = Visibility.Visible};
 
                     _emoticons.Add(img);
                 }
@@ -82,18 +69,15 @@ namespace SocialChat.userControl
         /// <returns>UIElement</returns>
         public UIElement Display()
         {
-            var labelAuthor = new Label();
-            labelAuthor.Content = string.Format("{0} : ", _author);
+            var labelAuthor = new Label {Content = string.Format("{0} : ", _author)};
 
-            var panel = new StackPanel();
-            panel.Orientation = Orientation.Horizontal;
+            var panel = new StackPanel {Orientation = Orientation.Horizontal};
             panel.Children.Add(labelAuthor);
 
             var i = 0;
             foreach (var img in _emoticons)
             {
-                var label = new Label();
-                label.Content = _messageComponents[i] ?? "";
+                var label = new Label {Content = _messageComponents[i] ?? ""};
 
                 panel.Children.Add(label);
                 panel.Children.Add(img);
@@ -102,8 +86,7 @@ namespace SocialChat.userControl
 
             if (_messageComponents.Count > 1)
             {
-                var label = new Label();
-                label.Content = _messageComponents[_messageComponents.Count - 1] ?? "";
+                var label = new Label {Content = _messageComponents[_messageComponents.Count - 1] ?? ""};
                 panel.Children.Add(label);
             }
 

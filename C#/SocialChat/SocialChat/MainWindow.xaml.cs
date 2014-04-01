@@ -1,22 +1,9 @@
 ﻿using SocialChat.userControl;
-using SocialChatBusiness;
 using SocialChatDAL;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SocialChat
 {
@@ -42,15 +29,12 @@ namespace SocialChat
 
             try
             {
-                socialEntities entity = new socialEntities();
+                var entity = new socialEntities();
                 //_messages = new ObservableCollection<social_message>(entity.social_message.ToList());
                 //MessagesList.ItemsSource = _messages;
 
-                foreach(var m in entity.social_message.ToList())
+                foreach (var panel in entity.social_message.ToList().Select(m => new MessageUserControl(m.author) {OriginalMessage = m.message}).Select(userControl => userControl.Display()))
                 {
-                    var userControl = new MessageUserControl(m.author);
-                    userControl.OriginalMessage = m.message;
-                    var panel = userControl.Display();
                     MainPanel.Children.Add(panel);
                 }
             }
@@ -58,6 +42,10 @@ namespace SocialChat
             {
             }
         }
+
+        #endregion
+
+        #region GUI Events
 
         #endregion
     }
