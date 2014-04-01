@@ -39,6 +39,7 @@ namespace SocialChat.userControl
                     var img = new Image {Width = 15, Height = 15, Source = bitmap, Visibility = Visibility.Visible};
 
                     _emoticons.Add(img);
+                    Draw();
                 }
             } 
         }
@@ -67,30 +68,22 @@ namespace SocialChat.userControl
         /// Render displaying Message
         /// </summary>
         /// <returns>UIElement</returns>
-        public UIElement Display()
+        private void Draw()
         {
             var labelAuthor = new Label {Content = string.Format("{0} : ", _author)};
 
-            var panel = new StackPanel {Orientation = Orientation.Horizontal};
-            panel.Children.Add(labelAuthor);
+            MainPanel.Children.Add(labelAuthor);
 
             var i = 0;
+            var label = new Label { Content = _messageComponents[i++] ?? "" };
+            MainPanel.Children.Add(label);
+
             foreach (var img in _emoticons)
             {
-                var label = new Label {Content = _messageComponents[i] ?? ""};
-
-                panel.Children.Add(label);
-                panel.Children.Add(img);
-                i++;
+                label = new Label { Content = _messageComponents[i++] ?? "" };
+                MainPanel.Children.Add(img);
+                MainPanel.Children.Add(label);
             }
-
-            if (_messageComponents.Count > 1)
-            {
-                var label = new Label {Content = _messageComponents[_messageComponents.Count - 1] ?? ""};
-                panel.Children.Add(label);
-            }
-
-            return panel;
         }
 
         #endregion

@@ -14,7 +14,7 @@ namespace SocialChat
     {
         #region Attributs
 
-        private ObservableCollection<social_message> _messages;
+        private ObservableCollection<MessageUserControl> _messages;
 
         #endregion
 
@@ -30,12 +30,12 @@ namespace SocialChat
             try
             {
                 var entity = new socialEntities();
-                //_messages = new ObservableCollection<social_message>(entity.social_message.ToList());
-                //MessagesList.ItemsSource = _messages;
+                _messages = new ObservableCollection<MessageUserControl>();
 
-                foreach (var panel in entity.social_message.ToList().Select(m => new MessageUserControl(m.author) {OriginalMessage = m.message}).Select(userControl => userControl.Display()))
+                foreach (var messsageUserControl in entity.social_message.ToList().Select(m => new MessageUserControl(m.author) {OriginalMessage = m.message}))
                 {
-                    MainPanel.Children.Add(panel);
+                    _messages.Add(messsageUserControl);
+                    MainPanel.Children.Add(messsageUserControl);
                 }
             }
             catch (Exception)
