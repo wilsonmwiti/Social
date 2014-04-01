@@ -6,18 +6,18 @@ $(function(){
 	
 	$('#messages').animate({scrollTop: $('#messages').css('height')});
 	
-	$('#authorInput').keydown(function (e){
+	$('#authorInput').keyup(function (e){
 		if(e.keyCode == 13){
 			$('#messageInput').focus();
 		}
 	});
 	
-	$('#messageInput').keydown(function (e){
+	$('#messageInput').keyup(function (e){
 		if(e.keyCode == 13){
 			$('#submitMessage').click();
 		}
 		else{
-			$('#print').html(140 - ($(this).val().length + 1));
+			$('#print').html(140 - ($(this).val().length));
 		}
 	});
 
