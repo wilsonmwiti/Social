@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialChat", "SocialChat\SocialChat.csproj", "{530ECF33-663B-4AD3-952F-396BF4A63177}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialChatBusiness", "SocialChatBusiness\SocialChatBusiness.csproj", "{89F902A8-B024-4437-9514-9FEFEAA2D97F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialChatDAL", "SocialChatDAL\SocialChatDAL.csproj", "{F6596980-E5C6-4B42-97CF-5707EF1B1F6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{530ECF33-663B-4AD3-952F-396BF4A63177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530ECF33-663B-4AD3-952F-396BF4A63177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530ECF33-663B-4AD3-952F-396BF4A63177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530ECF33-663B-4AD3-952F-396BF4A63177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F902A8-B024-4437-9514-9FEFEAA2D97F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F902A8-B024-4437-9514-9FEFEAA2D97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F902A8-B024-4437-9514-9FEFEAA2D97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F902A8-B024-4437-9514-9FEFEAA2D97F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6596980-E5C6-4B42-97CF-5707EF1B1F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6596980-E5C6-4B42-97CF-5707EF1B1F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6596980-E5C6-4B42-97CF-5707EF1B1F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6596980-E5C6-4B42-97CF-5707EF1B1F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
