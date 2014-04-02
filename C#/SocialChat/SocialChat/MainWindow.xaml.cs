@@ -55,6 +55,27 @@ namespace SocialChat
 
         #region GUI Events
 
+        /// <summary>
+        /// Event laucnh when user click on "AddMEssage" Button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddMessage(object sender, RoutedEventArgs e)
+        {
+            var author = AuthorInput.Text;
+            var message = MessageInput.Text;
+            string errorMessage;
+
+            if (!new Business().InsertMessage(author, message, out errorMessage))
+            {
+                MessageBox.Show(errorMessage);
+            }
+            else
+            {
+                MessageInput.Text = "";
+            }
+        }
+
         #endregion
     }
 }

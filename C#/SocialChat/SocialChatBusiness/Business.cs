@@ -12,15 +12,15 @@ namespace SocialChatBusiness
         private int _lastId = 0;
 
         /// <summary>
-        /// Get new message in the DB
+        /// Get new message from DB
         /// </summary>
         /// <returns>List<social_message></returns>
         public List<social_message> GetNewMessages()
         {
             var result = new List<social_message>();
-            using(var entity = new socialEntities())
+            using(var db = new socialEntities())
             {
-                result = entity.social_message.Where(m => m.id > _lastId).ToList();
+                result = db.social_message.Where(m => m.id > _lastId).ToList();
             }
 
             if (result.Any())
@@ -29,6 +29,38 @@ namespace SocialChatBusiness
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Check fields and insert object in DB
+        /// </summary>
+        /// <param name="author"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public bool InsertMessage(string author, string message, out string errorMessage)
+        {
+            if (string.IsNullOrEmpty(author) || string.IsNullOrEmpty(message))
+            {
+                errorMessage = "All fields are required !";
+                return false;
+            }
+
+            try
+            {
+                using (var db = new socialEntities())
+                {
+                    db.social_message.Add(new social_message { author = author, message = message, date = DateTime.Now });
+                    db.SaveChanges();
+                }
+
+                errorMessage = "";
+                return true;
+            }
+            catch (Exception e)
+            {
+                errorMessage = "An error occured";
+                return false;
+            }
         }
     }
 }
