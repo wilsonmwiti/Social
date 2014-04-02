@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using SocialChatBusiness;
 
 namespace SocialChat
 {
@@ -15,6 +16,13 @@ namespace SocialChat
         #region Attributs
 
         private ObservableCollection<MessageUserControl> _messages;
+        public ObservableCollection<MessageUserControl> Messages
+        {
+            get
+            {
+                return _messages;
+            }
+        }
 
         #endregion
 
@@ -29,13 +37,13 @@ namespace SocialChat
 
             try
             {
-                var entity = new socialEntities();
                 _messages = new ObservableCollection<MessageUserControl>();
+                var newMessages = new Business().GetNewMessages();
+                DataContext = _messages;
 
-                foreach (var messsageUserControl in entity.social_message.ToList().Select(m => new MessageUserControl(m.author) {OriginalMessage = m.message}))
+                foreach (var messsageUserControl in newMessages.Select(m => new MessageUserControl(m.author) { OriginalMessage = m.message }))
                 {
                     _messages.Add(messsageUserControl);
-                    MainPanel.Children.Add(messsageUserControl);
                 }
             }
             catch (Exception)
