@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="45bcf96eb9d44c578069e202f138b386" Name="Diagramme1">
+      <Diagram DiagramId="ae4b90d4b42149838a060bd2fca780e8" Name="Diagramme1">
         <EntityTypeShape EntityType="socialModel.social_message" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>

@@ -17,6 +17,5 @@ namespace SocialChatDAL
         public int id { get; set; }
         public string author { get; set; }
         public string message { get; set; }
-        public System.DateTime date { get; set; }
     }
 }

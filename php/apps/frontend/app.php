@@ -37,12 +37,11 @@ try{
         $author = $request->getParameter('author', null);
 		
 		$messageDataMapper = new MessageDataMapper($database);
-        $message = new Message(null, $author, $message, new DateTime());
+        $message = new Message(null, $author, $message);
 		
 		$messageDataMapper->persist($message);
 		
 		return true;
-        //return $rootManager->redirect(Conf::_ROOT_WEB_SITE_.'/');
     });
 	
 	//Routing consultation de messages
@@ -59,8 +58,6 @@ try{
 			}
 			
 			return json_encode($array);
-			//$smarty->assign('messages', $messages);
-			//return new Response($smarty->fetch('messages/messages.tpl'));
 		}
 
 		return json_encode(array());

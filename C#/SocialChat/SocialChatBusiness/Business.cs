@@ -11,6 +11,38 @@ namespace SocialChatBusiness
     {
         private int _lastId = 0;
 
+        #region Singleton
+
+        private static Business _mInstance;
+
+        private static readonly object Lock = new object();
+
+        /// <summary>
+        /// Construct
+        /// </summary>
+        private Business()
+        {
+        }
+
+        /// <summary>
+        /// Permet d'instancier (si besoin) et récupérer l'instance unique de classe
+        /// </summary>
+        /// <returns>Return l'instance unique de classe</returns>
+        public static Business GetInstance()
+        {
+            lock (Lock)
+            {
+                if (_mInstance == null)
+                {
+                    _mInstance = new Business();
+                }
+            }
+
+            return _mInstance;
+        }
+
+        #endregion
+
         /// <summary>
         /// Get new message from DB
         /// </summary>
@@ -18,7 +50,7 @@ namespace SocialChatBusiness
         public List<social_message> GetNewMessages()
         {
             var result = new List<social_message>();
-            using(var db = new socialEntities())
+            using (var db = new Entities())
             {
                 result = db.social_message.Where(m => m.id > _lastId).ToList();
             }
@@ -47,9 +79,9 @@ namespace SocialChatBusiness
 
             try
             {
-                using (var db = new socialEntities())
+                using (var db = new Entities())
                 {
-                    db.social_message.Add(new social_message { author = author, message = message, date = DateTime.Now });
+                    db.social_message.Add(new social_message { author = author, message = message });
                     db.SaveChanges();
                 }
 

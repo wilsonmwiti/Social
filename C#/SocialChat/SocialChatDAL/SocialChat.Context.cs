@@ -13,10 +13,10 @@ namespace SocialChatDAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class socialEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public socialEntities()
-            : base("name=socialEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     

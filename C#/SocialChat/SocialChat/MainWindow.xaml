@@ -26,10 +26,10 @@
         </ScrollViewer>
 
         <Label Content="Author :" Grid.Row="1" Grid.Column="0"/>
-        <TextBox Name="AuthorInput" Grid.Row="1" Grid.Column="1"/>
+        <TextBox Name="AuthorInput" Grid.Row="1" Grid.Column="1" KeyUp="EnterKeyPressed"/>
         
         <Label Content="Message :" Grid.Row="2" Grid.Column="0"/>
-        <TextBox Name="MessageInput" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Name="MessageInput" Grid.Row="2" Grid.Column="1" KeyUp="EnterKeyPressed"/>
 
         <Button Content="Send"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="AddMessage" />
     </Grid>
