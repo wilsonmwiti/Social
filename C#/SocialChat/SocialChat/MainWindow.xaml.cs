@@ -1,5 +1,4 @@
 ﻿using SocialChat.userControl;
-using SocialChatDAL;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -17,7 +16,7 @@ namespace SocialChat
     {
         #region Attributs
 
-        private ObservableCollection<MessageUserControl> _messages;
+        private readonly ObservableCollection<MessageUserControl> _messages;
         public ObservableCollection<MessageUserControl> Messages
         {
             get
@@ -43,7 +42,7 @@ namespace SocialChat
                 DataContext = _messages;
 
                 var dispatcherTimer = new DispatcherTimer();
-                dispatcherTimer.Tick += new EventHandler(RefreshMessageListe);
+                dispatcherTimer.Tick += RefreshMessageListe;
                 dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
                 dispatcherTimer.Start();
             }
@@ -84,16 +83,14 @@ namespace SocialChat
         /// <param name="e"></param>
         private void EnterKeyPressed(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key != Key.Enter) return;
+            if (Equals(sender, AuthorInput))
             {
-                if (sender == AuthorInput)
-                {
-                    MessageInput.Focus();
-                }
-                else if (sender == MessageInput)
-                {
-                    AddMessage(sender, new RoutedEventArgs());
-                }
+                MessageInput.Focus();
+            }
+            else if (Equals(sender, MessageInput))
+            {
+                AddMessage(sender, new RoutedEventArgs());
             }
         }
 

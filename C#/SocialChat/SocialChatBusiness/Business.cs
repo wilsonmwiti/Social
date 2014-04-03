@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SocialChatBusiness
 {
     public class Business
     {
-        private int _lastId = 0;
+        private int _lastId;
 
         #region Singleton
 
@@ -18,7 +16,7 @@ namespace SocialChatBusiness
         {
             get
             {
-                lock (_lock)
+                lock (Lock)
                 {
                     if (_instance == null)
                     {
@@ -30,7 +28,7 @@ namespace SocialChatBusiness
             }
         }
 
-        private static readonly object _lock = new object();
+        private static readonly object Lock = new object();
 
         /// <summary>
         /// Construct
@@ -39,25 +37,29 @@ namespace SocialChatBusiness
         {
         }
 
-        
-
         #endregion
 
         /// <summary>
         /// Get new message from DB
         /// </summary>
-        /// <returns>List<social_message></returns>
+        /// <returns>List</returns>
         public List<social_message> GetNewMessages()
         {
             var result = new List<social_message>();
-            using (var db = new Entities())
+            try
             {
-                result = db.social_message.Where(m => m.id > _lastId).ToList();
-            }
+                using (var db = new Entities())
+                {
+                    result = db.social_message.Where(m => m.id > _lastId).ToList();
+                }
 
-            if (result.Any())
+                if (result.Any())
+                {
+                    _lastId = result.Last().id;
+                }
+            }
+            catch (Exception)
             {
-                _lastId = result.Last().id;
             }
 
             return result;
@@ -68,6 +70,7 @@ namespace SocialChatBusiness
         /// </summary>
         /// <param name="author"></param>
         /// <param name="message"></param>
+        /// <param name="errorMessage"> </param>
         /// <returns></returns>
         public bool InsertMessage(string author, string message, out string errorMessage)
         {
@@ -88,7 +91,7 @@ namespace SocialChatBusiness
                 errorMessage = "";
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 errorMessage = "An error occured";
                 return false;
