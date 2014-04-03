@@ -40,4 +40,4 @@
 ###Tutorial used
 
 	During all my developments, I use several tutorials to learn new technologies and language :
-	* [Entity Framework with Mysql](http://archive.loicrebours.fr/index.php/2010/12/13/utiliser-entity-framework-avec-mysql/)
+	* <a href="http://archive.loicrebours.fr/index.php/2010/12/13/utiliser-entity-framework-avec-mysql/">Entity Framework with Mysql</a>

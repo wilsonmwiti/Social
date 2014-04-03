@@ -13,9 +13,24 @@ namespace SocialChatBusiness
 
         #region Singleton
 
-        private static Business _mInstance;
+        private static Business _instance;
+        public static Business Instance
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new Business();
+                    }
+                }
 
-        private static readonly object Lock = new object();
+                return _instance;
+            }
+        }
+
+        private static readonly object _lock = new object();
 
         /// <summary>
         /// Construct
@@ -24,22 +39,7 @@ namespace SocialChatBusiness
         {
         }
 
-        /// <summary>
-        /// Permet d'instancier (si besoin) et récupérer l'instance unique de classe
-        /// </summary>
-        /// <returns>Return l'instance unique de classe</returns>
-        public static Business GetInstance()
-        {
-            lock (Lock)
-            {
-                if (_mInstance == null)
-                {
-                    _mInstance = new Business();
-                }
-            }
-
-            return _mInstance;
-        }
+        
 
         #endregion
 

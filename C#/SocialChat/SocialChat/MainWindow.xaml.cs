@@ -67,7 +67,7 @@ namespace SocialChat
             var message = MessageInput.Text;
             string errorMessage;
 
-            if (!Business.GetInstance().InsertMessage(author, message, out errorMessage))
+            if (!Business.Instance.InsertMessage(author, message, out errorMessage))
             {
                 MessageBox.Show(errorMessage);
             }
@@ -106,13 +106,13 @@ namespace SocialChat
         /// </summary>
         private void RefreshMessageListe(object sender, EventArgs e)
         {
-            var newMessages = Business.GetInstance().GetNewMessages();
+            var newMessages = Business.Instance.GetNewMessages();
             foreach (var messsageUserControl in newMessages.Select(m => new MessageUserControl(m.author) { OriginalMessage = m.message }))
             {
                 _messages.Add(messsageUserControl);
             }
         }
 
-        #endregion
+        #endregion 
     }
 }
