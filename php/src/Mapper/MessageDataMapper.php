@@ -31,7 +31,7 @@ class MessageDataMapper implements DataMapperInterface, FinderInterface {
 		
         $results = $this->database->executeQuery($query);
         foreach($results as $message){
-            $messageMap = new Message($message->id, $message->author, $message->message, new \DateTime($message->date));
+            $messageMap = new Message($message->id, $message->author, $message->message);
             $col->attach($messageMap);
         }
 
@@ -50,7 +50,7 @@ class MessageDataMapper implements DataMapperInterface, FinderInterface {
             $message = $result[0];
 		}
 
-        return new Message($message->id, $message->author, $message->message, new \DateTime($message->date));
+        return new Message($message->id, $message->author, $message->message);
     }
 
     public function remove($message){
@@ -61,12 +61,11 @@ class MessageDataMapper implements DataMapperInterface, FinderInterface {
     }
 
     public function insert($message){
-        $query = "INSERT INTO social_message VALUES(null, :author, :message, :date)";
+        $query = "INSERT INTO social_message VALUES(null, :author, :message)";
 
         $this->database->executeQuery($query, array(
             'author' => $message->getAuthor(),
-            'message' => $message->getMessage(),
-            'date' => $message->getDate()->format("Y-m-d H:i:s")));
+            'message' => $message->getMessage()));
         
         return $this->database->lastInsertId();
     }
@@ -75,16 +74,14 @@ class MessageDataMapper implements DataMapperInterface, FinderInterface {
         $query = "UPDATE social_message
                   SET
                     author = :author,
-                    message = :message,
-                    date = :date
+                    message = :message
                   WHERE
                     id = :id";
 
         return $this->database->executeQuery($query, array(
             'id' => $message->getId(),
             'author' => $message->getAuthor(),
-            'message' => $message->getMessage(),
-            'date' => $message->getDate()->format("Y-m-d H:i:s")));
+            'message' => $message->getMessage()));
     }
 
     public function persist($message){

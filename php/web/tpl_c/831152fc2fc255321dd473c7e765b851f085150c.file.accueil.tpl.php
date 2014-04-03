@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-03-31 09:07:42
+<?php /* Smarty version Smarty-3.1.14, created on 2014-04-02 16:16:19
          compiled from "web\tpl\general\accueil.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:303665332b3ebe30351-20270201%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '831152fc2fc255321dd473c7e765b851f085150c' => 
     array (
       0 => 'web\\tpl\\general\\accueil.tpl',
-      1 => 1396256718,
+      1 => 1396455375,
       2 => 'file',
     ),
     'be1c21a7c90a71d03992fe17948bced22c19dc3c' => 
@@ -86,7 +86,7 @@ $_smarty_tpl->tpl_vars['message']->_loop = true;
 				<td>print : <span id="print">140</span></td>
 			</tr>
 		</table>
-		<input type="button" value="Envoyer" id="submitMessage" onClick="addMessage()"/>
+		<input type="button" value="Send" id="submitMessage" onClick="addMessage()"/>
 	</form>
 	
 	<div id="emoticons" style="display: none;"></div>

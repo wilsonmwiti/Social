@@ -8,14 +8,12 @@ class Message {
     public $id;
     public $author;
     public $message;
-    public $date;
 
-    function __construct($id, $author, $message, \DateTime $date)
+    function __construct($id, $author, $message)
     {
         $this->id = $id;
         $this->author = $author;
         $this->message = $message;
-        $this->date = $date;
     }
 
     public function setId($id)
@@ -46,16 +44,6 @@ class Message {
     public function getMessage()
     {
         return $this->message;
-    }
-
-    public function setDate(\DateTime $date)
-    {
-        $this->date = $date;
-    }
-
-    public function getDate()
-    {
-        return $this->date;
     }
 
     public function isNew(){

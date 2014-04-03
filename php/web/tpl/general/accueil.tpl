@@ -29,7 +29,7 @@
 				<td>print : <span id="print">140</span></td>
 			</tr>
 		</table>
-		<input type="button" value="Envoyer" id="submitMessage" onClick="addMessage()"/>
+		<input type="button" value="Send" id="submitMessage" onClick="addMessage()"/>
 	</form>
 	
 	<div id="emoticons" style="display: none;"></div>

@@ -39,8 +39,8 @@ namespace SocialChat.userControl
                     var img = new Image {Width = 15, Height = 15, Source = bitmap, Visibility = Visibility.Visible};
 
                     _emoticons.Add(img);
-                    Draw();
                 }
+                Draw();
             } 
         }
 
