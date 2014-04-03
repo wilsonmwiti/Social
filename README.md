@@ -1,27 +1,27 @@
-###"Social"
+####"Social"
 
 	"Social" is a little chat without login process.
 	
-###Why
+####Why
 
 	In order to increase my knowledge, I develop "Social" in different languages and technologies.
 
-###Web App (php)
+####Web App (php)
 
-###Desktop App (C#)
+####Desktop App (C#)
 
-###Desktop App (Java)
-
-	Not yet developed !
-
-###Mobile App (Android)
+####Desktop App (Java)
 
 	Not yet developed !
 
-###Mobile App (Ios)
+####Mobile App (Android)
 
 	Not yet developed !
 
-###Mobile App (Windows Phone)
+####Mobile App (Ios)
+
+	Not yet developed !
+
+####Mobile App (Windows Phone)
 
 	Not yet developed !
