@@ -35,27 +35,6 @@ CREATE TABLE IF NOT EXISTS `social_message` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
---
--- Contenu de la table `social_message`
---
-
-INSERT INTO `social_message` (`id`, `author`, `message`) VALUES
-(8, 'alex', 'test <img height="15px" src="web/images/emoticons/smile.png" alt=":)" />'),
-(9, 'alex', 'test <img height="15px" src="web/images/emoticons/sad.png" alt=":(" />'),
-(10, 'alex', 'test <img height="15px" src="web/images/emoticons/wink.png" alt=";)" />'),
-(11, 'test', 'test <img height="15px" src="web/images/emoticons/tongue.png" alt=":p" />'),
-(12, 'test', 'test <img height="15px" src="web/images/emoticons/love.png" alt="<3" />'),
-(13, 'test', 'test <img height="15px" src="web/images/emoticons/surprised.png" alt=":o" />'),
-(14, 'test', 'test <img height="15px" src="web/images/emoticons/crying.png" alt=":''(" />'),
-(15, 'Alex', 'salut <img height="15px" src="web/images/emoticons/smile.png" alt=":)" /> ça va ? <img height="15px" src="web/images/emoticons/tongue.png" alt=":p" />'),
-(16, 'Alex', '<img height="15px" src="web/images/emoticons/tongue.png" alt=":p" />'),
-(17, 'Alex', 'yop <img height="15px" src="web/images/emoticons/wink.png" alt=";)" /> ça va ? <img height="15px" src="web/images/emoticons/tongue.png" alt=":p" /> belle journée hein <img height="15px" src="web/images/emoticons/smile.png" alt=":)" />'),
-(18, 'Alex', 'coucou <img height="15px" src="web/images/emoticons/smile.png" alt=":)" /> ça va ?'),
-(19, 'Alex', '<img height="15px" src="web/images/emoticons/smile.png" alt=":)" /> <img height="15px" src="web/images/emoticons/tongue.png" alt=":p" /> <img height="15px" src="web/images/emoticons/wink.png" alt=";)" />'),
-(20, 'Alex', '<img height="15px" src="web/images/emoticons/smile.png" alt=":)" /> ploop'),
-(21, 'alex', 'Test WPF'),
-(22, 'Alex', 'Test WPF 2');
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
