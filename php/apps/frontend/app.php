@@ -27,12 +27,12 @@ try{
     });
 
     //Routing INDEX
-    $rootManager->get(Conf::_ROOT_WEB_SITE_.'/index', function () use ($rootManager, $smarty, $database){
+    $rootManager->get(Conf::_ROOT_WEB_SITE_.'/index', function () use ($rootManager){
         return $rootManager->redirect(Conf::_ROOT_WEB_SITE_.'/');
     });
     
 	//Routing Ajout de message
-    $rootManager->post(Conf::_ROOT_WEB_SITE_.'/messages', function (Request $request) use ($rootManager, $smarty, $database){
+    $rootManager->post(Conf::_ROOT_WEB_SITE_.'/messages', function (Request $request) use ($database){
 		$message = $request->getParameter('message', null);
         $author = $request->getParameter('author', null);
 		
@@ -45,7 +45,7 @@ try{
     });
 	
 	//Routing consultation de messages
-	$rootManager->get(Conf::_ROOT_WEB_SITE_.'/messages', function (Request $request) use ($rootManager, $smarty, $database){
+	$rootManager->get(Conf::_ROOT_WEB_SITE_.'/messages', function (Request $request) use ($database){
 		$lastId = $request->getParameter('lastId', null);
 		
 		$messageDataMapper = new MessageDataMapper($database);

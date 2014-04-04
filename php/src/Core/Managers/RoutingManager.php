@@ -3,7 +3,6 @@
 namespace Core\Managers;
 
 use Core\Route;
-use Core\Tools;
 use Core\Http\Request;
 use Core\Http\Response;
 use Exception\HttpException;
@@ -88,9 +87,7 @@ class RoutingManager
     }
 
     public function redirect($to, $statusCode = 302){
-        // \http_response_code($statusCode); <-- Fonction dispo dans PHP > 5.4.0
-        Tools::http_response_code($statusCode);
-
+        http_response_code($statusCode);
         header(sprintf('Location: %s', $to));
 
         die;

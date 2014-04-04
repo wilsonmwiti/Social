@@ -21,4 +21,11 @@
     $rootManager = new RoutingManager($smarty);
 
     $req = Request::createFromGlobals();
-    include_once('apps/frontend/app.php');
+	
+	if(stristr($req->getUri(), '/json')){
+        include_once('apps/api/app.php');
+    }
+	else{
+		include_once('apps/frontend/app.php');
+	}
+    

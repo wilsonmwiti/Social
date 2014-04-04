@@ -2,8 +2,6 @@
 
 namespace Exception;
 
-use Core\Tools;
-
 class ExceptionHandler
 {
     private $templateEngine;
@@ -14,9 +12,9 @@ class ExceptionHandler
 
     public function handle(\Exception $exception){
         if ($exception instanceof HttpException)
-            Tools::http_response_code($exception->getStatusCode());
+            http_response_code($exception->getStatusCode());
         else
-            Tools::http_response_code(500);
+            http_response_code(500);
 
         if (null !== $exception->getPrevious()) {
             $exception = $exception->getPrevious();
