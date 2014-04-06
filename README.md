@@ -18,6 +18,7 @@
 	* add message
 	* emoticons usable
 	* print counter
+	* web service to get all message
 
 ####Desktop App (C#)
 
@@ -37,7 +38,14 @@
 
 ####Mobile App (Android)
 
-	Not yet developed !
+	"Social" mobile app (Android) is an Android application wich use "Social web app" webservice.
+	To realise it, I use the following technologies/languages :
+	* Java
+	* Android
+	* Geolocation services
+	
+	The following features have been implemented :
+	* user's geolocation
 
 ####Mobile App (Ios)
 
@@ -49,5 +57,5 @@
 	
 ###Tutorial used
 
-	During all my developments, I use several tutorials to learn new technologies and language :
+	During all my developments, I use several tutorials to learn new technologies and languages :
 	* <a href="http://archive.loicrebours.fr/index.php/2010/12/13/utiliser-entity-framework-avec-mysql/">Entity Framework with Mysql</a>
