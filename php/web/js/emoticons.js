@@ -10,24 +10,10 @@ var emoticonsImg = {
 	crying: '<img height="15px" src="web/images/emoticons/crying.png" alt=":\'(" />', //crying
 }
 
-var emoticonsString = {
-	smile: ':)', //smile
-	sad: ':(', //sad
-	wink: ';)', //wink
-	tongue: ':p', //tongue
-	surprised: ':o', //surprised
-	shy: ':$', //shy
-	love: '<3', //love
-	confused: ':s', //confused
-	crying: ":'(", //crying
-}
+var emoticonsString = new Array(':)', ':(', ';)', ':p', ':o', ':$', '<3', ':s', ":'(");
 
-$(function(){
-	for(var key in emoticonsString) {
-	  $('#emoticons').append( key + " => " + emoticonsString[key] + "<br />");
-	}
-	
+$(function(){	
 	$('#help').click(function(){
-		$('#emoticons').dialog();
+		alert('Available emoticons => ' + emoticonsString.join(" "));
 	});
 });

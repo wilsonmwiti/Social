@@ -12,6 +12,12 @@
 	To realise it, I use the following technologies/languages :
 	* php
 	* JQuery
+	
+	The following features have been implemented :
+	* display message
+	* add message
+	* emoticons usable
+	* print counter
 
 ####Desktop App (C#)
 
@@ -20,6 +26,10 @@
 	* C#
 	* WPF (data-binding, user-control)
 	* EntityFrameork with Mysql database
+	
+	The following features have been implemented :
+	* display message
+	* add message
 
 ####Desktop App (Java)
 
