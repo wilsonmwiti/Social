@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
         boolean isConnected = (network != null && network.isConnectedOrConnecting());
         if(!isConnected) {
             Toast.makeText(this, getResources().getString(R.string.noConnectionError), Toast.LENGTH_LONG).show();
-            //closeApp();
+            closeApp();
         }
 
         //Location init and settings
