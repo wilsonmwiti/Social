@@ -8,10 +8,13 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
@@ -42,6 +45,15 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Connectivity init and settings
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo network = cm.getActiveNetworkInfo();
+        boolean isConnected = (network != null && network.isConnectedOrConnecting());
+        if(!isConnected) {
+            Toast.makeText(this, getResources().getString(R.string.noConnectionError), Toast.LENGTH_LONG).show();
+            //closeApp();
+        }
 
         //Location init and settings
         LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -86,7 +98,7 @@ public class MainActivity extends Activity {
      * @param l the location to display.
      */
     private void updateLocation(Location l){
-        String locationDisplay = getResources().getString(R.string.unknownLocationLabel);;
+        String locationDisplay = getResources().getString(R.string.unknownLocationLabel);
 
         if(l != null) {
             double latitude = l.getLatitude();
@@ -104,5 +116,23 @@ public class MainActivity extends Activity {
 
         TextView positionLabel = (TextView)findViewById(R.id.positionLabel);
         positionLabel.setText(locationDisplay);
+    }
+
+    /** Close the current application after a few times
+     *
+     */
+    private void closeApp(){
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3500);
+                    MainActivity.this.finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
     }
 }

@@ -9,5 +9,6 @@
     <string name="sendLabel">Envoyer</string>
 
     <string name="unknownLocationLabel">Position inconnue</string>
+    <string name="noConnectionError">Une connection internet est nécessaire pour cette application !</string>
 
 </resources>
