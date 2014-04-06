@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SocialChat</string>
+    <string name="action_settings">Paramètres</string>
+
+    <string name="authorLabel">Auteur</string>
+    <string name="messageLabel">Message</string>
+    <string name="sendLabel">Envoyer</string>
+
+    <string name="unknownLocationLabel">Position inconnue</string>
+
+</resources>
